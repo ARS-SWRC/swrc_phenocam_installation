@@ -1,16 +1,27 @@
-# Instructions for enabling image transferring to Phenocam network
-**USDA-ARS, Southwest Watershed Research Center**<br>
-Guillermo Ponce<br>
-guillermo.ponce@ars.usda.gov
+---
+title: "Instructions for enabling image transferring to Phenocam network"
+author: 
+- USDA-ARS, Southwest Watershed Research Center
+- Guillermo Ponce
+- guillermo.ponce@ars.usda.gov
+date:  "`r format(Sys.time(), '%d %B, %Y')`"
+output: html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
 
 This notebook is for documenting the steps for setting up the camera 
 **StarDot NetCam-SC-IR** regarding *how to enable image transferring 
 to the Phenocam network server*.  This should work as a "living document" for 
 keeping track of future camera installations/updates details. All the 
 information contained in this document comes from the Phenocam network 
-documentation (see references) and this is just intended to be a quick reference 
+documentation (see references) and this is just intended to be a quick reference
 for the USDA-ARS-SWRC personnel. 
 
+This document was created in RStudio as a 
+[R-Notebook](http://rmarkdown.rstudio.com/r_notebooks.html) document and the source file(**Rmd**) 
+can be downloaded by clicking on the top-right button and selecting 
+"Download Rmd".
 
 ### Adding a new camera?
 
@@ -18,8 +29,9 @@ If you have a completely new camera, never installed as part of the Phenocam
 network before, the first step is to contact [Bijan Seyednasrollah - seyednasrollah@fas.harvard.edu](mailto:seyednasrollah@fas.harvard.edu) and fill 
 out this Phenocam survey:
 
-https://docs.google.com/forms/d/e/1FAIpQLSdElsiEKj2W3L0Lwd8fi0XbmNmz4wspR9MtEdy05Xlw4Fw65w/viewform?c=0&w=1 
-
+  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdElsiEKj2W3L0Lwd8fi0XbmNmz4wspR9MtEdy05Xlw4Fw65w/viewform?c=0&w=1" width="100%" height="800">
+  <p>Your browser does not support iframes.</p>
+</iframe>
 
 ### Setting up the camera for transferring images
 Follow these steps before running the Phenocam Installation Tool (PIT): 
@@ -42,17 +54,25 @@ network installation, instructions can be found at:
 **Git** can be downloaded at https://git-scm.com/downloads
 
 Git the PIT project.  At the command line type:
+```{bash eval=FALSE, include=TRUE}
 
-`git clone https://github.com/khufkens/phenocam-installation-tool.git`
+git clone https://github.com/khufkens/phenocam-installation-tool.git
+
+```
 This will create the folder `phenocam-installation-tool`. Now, change to that 
 folder by typing:
+```{bash eval=FALSE, include=TRUE}
 
-`cd phenocam-installation-tool`
+cd phenocam-installation-tool
 
-
+```
 At this folder there is a shell script that should be used to setup the 
 transferring options
-`./PIT.sh IP USER PASSWORD CAMERA TIME_OFFSET TZ CRON_START CRON_END CRON_INT FTP_MODE`
+```{bash  eval=FALSE, include=TRUE}
+
+./PIT.sh IP USER PASSWORD CAMERA TIME_OFFSET TZ CRON_START CRON_END CRON_INT FTP_MODE
+
+```
 where:
 
 Parameter     | Description
@@ -70,16 +90,18 @@ FTP_MODE      | active or passive (default = passive)
 [all parameters are required!]
 
 An example, at the command line:
+```{bash  eval=FALSE, include=TRUE}
 
-`./PIT.sh 10.1.1.xxx admin xyz luckyhills -7 MST 4 22 30 passive`
+./PIT.sh 10.1.1.xxx admin xyz luckyhills -7 MST 4 22 30 passive
 
+```
 This script configures the camera named `luckyhills`, located in the MST time 
 zone (UTC -7) to take images every half hour between 4 and 22h. Also, it will 
 output several messages, verify that the "upload images" section works well 
 without showing any error messages.
 
-> **Notes:**
-
+> **Note:**
+>
 > - Tests were made on the camera model **StarDot NetCam-SC-IR**
 > - Inspect camera information by typing the IP-address of the camera in a web-browser, e.g. http://10.1.1.xxx/
 > - Details related to the hardware/network setup can be added to this document
