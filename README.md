@@ -44,6 +44,7 @@ network installation, instructions can be found at:
 Git the PIT project.  At the command line type:
 
 `git clone https://github.com/khufkens/phenocam-installation-tool.git`
+
 This will create the folder `phenocam-installation-tool`. Now, change to that 
 folder by typing:
 
